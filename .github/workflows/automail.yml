@@ -13,6 +13,8 @@ jobs:
         uses: actions/checkout@v1
       - name: 'Get Weather'
         run: bash ./SendMail.sh
+      - name: 'echo data'
+        run: echo "good boy!" >> 1.txt
   mail_job:
     name: send mail
     needs: weather_job
@@ -20,6 +22,10 @@ jobs:
     steps:
       - name: 'Get Date'
         run: echo "::set-env name=REPORT_DATE::$(TZ=':Asia/Shanghai' date '+%Y-%m-%d %T')"
+      - name: 'Checkout codes'
+        uses: actions/checkout@v1
+      - name: 'Get Weather'
+        run: bash ./SendMail.sh
       - name: get mail address
         env:
           MY_VAR: Hi there! My name is
