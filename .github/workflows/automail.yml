@@ -2,7 +2,7 @@ name: CI
 on:
   push:
   schedule:
-    - cron: '*/20 * * * *'
+    - cron: '0 */3 * * *'
     
 jobs:
   weather_job:
@@ -44,7 +44,7 @@ jobs:
           server_port: 465
           username: ${{ secrets.MAIL_USERNAME }}
           password: ${{ secrets.MAIL_PASSWORD }}
-          subject: Shanghai Weather Report (${{env.REPORT_DATE}})
+          subject: Beijing Weather Report (${{env.REPORT_DATE}})
           #body: Build job of ${{github.repository}} completed successfully!
           body: file://result.html
           to: bigdot123456@qq.com
